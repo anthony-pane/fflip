@@ -8,9 +8,9 @@ from fflip.analysis.edp_util import *
 from time import sleep
 from random import randint
 
-#class ElectronDensityError:
-#    """ pass when error found in EDP creation """
-#    pass
+class ElectronDensityError:
+    """ pass when error found in EDP creation """
+    pass
 
 def smooth_edp(data, degree):
     triangle = np.concatenate((np.arange(degree + 1), np.arange(degree)[::-1]))
