@@ -247,9 +247,10 @@ class MembraneDhh(BinEdgeUpdater):
             )  # this is !much! faster than manual bins
             distrib = np.array([histogram[0]])[0]
             data = smooth_edp(distrib, 12)
-            for x,y in zip(histogram[0],data):
-                print(x,y)
-            return
+            print(data[0:10])
+            #for x,y in zip(histogram[0],data):
+            #    print(x,y)
+            #return
             rho_max_n = np.amax(data[:int(self.num_bins/2)])
             n_position = np.where(data==rho_max_n)
             rho_max_p = np.amax(data[int(self.num_bins/2):])
