@@ -248,7 +248,7 @@ class MembraneDhh(BinEdgeUpdater):
             distrib = np.array([histogram[0]])[0]
             data = smooth_edp(distrib, self.smooth_points)
             for x,y in enumerate(data):
-                print(x*self.box_length_fixed,y)
+                print(x*self.box_length_fixed/self.num_bins,y)
             return
             rho_max_n = np.amax(data[:int(self.num_bins/2)])
             n_position = np.where(data==rho_max_n)
