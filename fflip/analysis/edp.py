@@ -8,6 +8,9 @@ from fflip.analysis.edp_util import *
 from time import sleep
 from random import randint
 
+#class ElectronDensityError:
+#    """ pass when error found in EDP creation """
+#    pass
 
 def smooth_edp(data, degree):
     triangle = np.concatenate((np.arange(degree + 1), np.arange(degree)[::-1]))
@@ -247,9 +250,11 @@ class MembraneDhh(BinEdgeUpdater):
             )  # this is !much! faster than manual bins
             distrib = np.array([histogram[0]])[0]
             data = smooth_edp(distrib, self.smooth_points)
-            for x,y in enumerate(data):
-                print(x*self.box_length_fixed/self.num_bins,y)
-            return
+            #for x,y in enumerate(data):
+            #    print(x*self.box_length_fixed/self.num_bins,y)
+            #return
+            if fr == 0 and data[0] != data[-1]:
+                raise ElectronDensityError('edp not symmetric, increase edge_bins or decrease smooth_points')
             rho_max_n = np.amax(data[:int(self.num_bins/2)])
             n_position = np.where(data==rho_max_n)
             rho_max_p = np.amax(data[int(self.num_bins/2):])
