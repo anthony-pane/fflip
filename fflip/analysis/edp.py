@@ -8,7 +8,7 @@ from fflip.analysis.edp_util import *
 from time import sleep
 from random import randint
 
-class ElectronDensityError:
+class ElectronDensityError(Exception):
     """ pass when error found in EDP creation """
     pass
 
