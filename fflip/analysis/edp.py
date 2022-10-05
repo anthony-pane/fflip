@@ -259,9 +259,10 @@ class MembraneDhh(BinEdgeUpdater):
             n_position = np.where(data==rho_max_n)
             rho_max_p = np.amax(data[int(self.num_bins/2):])
             p_position = np.where(data==rho_max_p)
+            print(p_position[0:5])
+            print(n_position[0:5])
             dhh_per_frame.append(
-                self.box_length_fixed * (p_position[-1] - n_position[0])[0] * 10 / self.num_bins
-            )
+                self.box_length_fixed * (p_position[-1] - n_position[0])[0] * 10 / self.num_bins)
         return np.array(dhh_per_frame)
 
 
